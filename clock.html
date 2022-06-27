@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <title>clock</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Dancing Script', cursive;
+      box-sizing: border-box;
+    }
+
+    #container {
+      width: 100%;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      background: #2f363e;
+      background: url('./images/銀河.jpg') no-repeat center/cover;
+    }
+
+    #clock {
+      width: 550px;
+      height: 550px;
+      background-color: #2f363e;
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0px 0px 50px rgba(255, 255, 255, 0.5),
+        0px 0px 50px rgba(255, 255, 255, 0.8),
+        inset 0 0 30px rgba(255, 255, 255, 0.5);
+      opacity: 0.9;
+      ;
+    }
+
+
+    #clock::before {
+      content: '';
+      position: absolute;
+      background-color: #FF9A00;
+      background: url(./images/太陽.png) no-repeat center/cover;
+      width: 90px;
+      height: 90px;
+      top: 50.8%;
+      left: 50.3%;
+      transform: translate(-50%, -50%);
+      /* border: 2px solid rgba(255, 255, 255, 0.3); */
+      border-radius: 50%;
+      z-index: 20;
+      /* box-shadow: 0 0 20px #FF9A00; */
+
+    }
+
+
+    .font-style {
+      color: white;
+      position: absolute;
+      line-height: 40px;
+      font-size: 50px;
+      opacity: 0.8;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .n-12 {
+      top: 3%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .n-3 {
+      right: 4.5%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .n-6 {
+      left: 50%;
+      bottom: 3%;
+      transform: translateX(-50%);
+    }
+
+    .n-9 {
+      left: 4.5%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+
+    }
+
+    .circle2 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+
+    }
+
+    .circle3 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      height: 400px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+
+    }
+
+    #hour {
+      width: 8%;
+      height: 5px;
+      background: deepskyblue;
+      position: absolute;
+      top: calc(50% - 2.5px);
+      left: calc(50%);
+      border-radius: 0px;
+      transform-origin: left center;
+      border-radius: 2px;
+      box-shadow: 0 0 20px deepskyblue,
+        inset 0 0 20px rgba(0, 191, 255, 0.5);
+      z-index: 1;
+
+    }
+
+    #hour::before {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      left: 84px;
+      top: -7.5px;
+      border-radius: 50%;
+      background: url('./images/地球.png') no-repeat center/cover;
+      /* background-color: rgba(0, 191, 255, 0.5); */
+      box-shadow: 0 0 20px deepskyblue,
+        inset 0 0 20px rgba(0, 191, 255, 0.5);
+    }
+
+    #minute {
+      width: 10%;
+      height: 5px;
+      background: #D81F2A;
+      position: absolute;
+      top: calc(50% - 2.5px);
+      left: calc(50%);
+      /* border-radius: 5px; */
+      transform-origin: left center;
+      border-radius: 2px;
+      box-shadow: 0 0 30px #D81F2A,
+        inset 0 0 30px #D81F2A;
+      z-index: 2;
+
+    }
+
+    #minute::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      left: 139px;
+      top: -7.5px;
+      border-radius: 50%;
+      background: url('./images/火星.png') no-repeat center/cover;
+      background-color: rgba(216, 31, 42, 0.5);
+      box-shadow: 0 0 20px rgba(216, 31, 42, 0.5), ;
+
+    }
+
+    #second {
+      width: 14%;
+      height: 5px;
+      background: #ED9B4F;
+      position: absolute;
+      top: calc(50% - 2.5px);
+      left: calc(50%);
+      /* border-radius: 5px; */
+      transform-origin: left center;
+      border-radius: 2px;
+      ;
+      box-shadow: 0 0 30px #ED9B4F,
+        inset 0 0 30px #ED9B4F;
+      z-index: 3;
+    }
+
+
+    #second::before {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      left: 179px;
+      top: -7.5px;
+      border-radius: 50%;
+      box-shadow: 0 0 20px #ED9B4F,
+        inset 0 0 20px rgba(237, 155, 79, 0.5);
+      background: url('./images/木星.png') no-repeat center/cover;
+      /* background-color: rgba(47, 54, 62, 0.1); */
+
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <div id="clock">
+      <span class="n-12 font-style">12</span>
+      <span class="n-3 font-style">3</span>
+      <span class="n-6 font-style">6</span>
+      <span class="n-9 font-style">9</span>
+      <div class="circle"></div>
+      <div class="circle2"></div>
+      <div class="circle3"></div>
+      <div id="second"></div>
+      <div id="minute"></div>
+      <div id="hour"></div>
+    </div>
+  </div>
+
+  <script>
+    const hour = document.getElementById('hour')
+    const minute = document.getElementById('minute')
+    const second = document.getElementById('second')
+
+    setInterval(() => {
+      const date = new Date()
+      hour.style.transform = `rotate(${date.getHours() * 30 - 90}deg)`
+      minute.style.transform = `rotate(${date.getMinutes() * 6 - 90}deg)`
+      second.style.transform = `rotate(${date.getSeconds() * 6 - 90}deg)`
+    }, 1000)
+  </script>
+</body>
+
+</html>
